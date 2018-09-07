@@ -1,13 +1,13 @@
-# Project Name
+Yelpest
 
-> Project description
+> Recreation of a Yelp page for businesses, specifically the photo carousel
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/hrsf102tempest/hrsf102-Map
+  - https://github.com/hrsf102tempest/hrsf102-Header
+  - https://github.com/hrsf102tempest/hrsf102-Reviews
+  - https://github.com/hrsf102tempest/hrsf102-Side-Bar
 
 ## Table of Contents
 
