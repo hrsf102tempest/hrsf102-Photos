@@ -1,13 +1,14 @@
 {
-  "name": "",
+  "name": "photocarousel",
   "version": "",
   "description": "",
-  "author": "",
+  "author": "Christopher Tung",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
   "scripts": {
+    "start": "nodemon ./server/index.js",
     "seed": "node database/seedData.js"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "nodemon": "^1.18.4"
   }
 }
