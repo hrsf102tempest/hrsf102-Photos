@@ -1,9 +1,11 @@
 const express = require('express');
-const app = express();
+const path = require('path');
 const db = require('../database/index.js');
+
+const app = express();
 const PORT = 3002;
 
-app.use(express.static('../public'));
+app.use('/biz/:id', express.static(path.join(__dirname, '/../client/dist')));
 
 app.get('/businesses/:busId', (req, res) => {
   console.log(`Received request from client for business ID ${req.params.busId}`);
