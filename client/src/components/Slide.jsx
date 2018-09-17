@@ -18,22 +18,26 @@ const SlideImage = styled.img`
   width: 100%;
 `;
 
-class Slide extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+const CaptionContainer = styled.div`
+  visibility: ${props => props.active ? 'visible' : 'hidden'};
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+`;
 
-  render() {
-    const { link, user_name, description } = this.props.photoData;
-    const { handleActivePhoto, handleInactivePhoto, active } = this.props;
-    return (
-      <SlideContainer active={active} onMouseEnter={handleActivePhoto} onMouseLeave={handleInactivePhoto}>
-        <SlideImage src={link} />
-      </SlideContainer>
-    );
-  }
-}
+const Slide = (props) => {
+  const { link, user_name, description } = props.photoData;
+  const { handleActivePhoto, handleInactivePhoto, active } = props;
+  return (
+    <SlideContainer active={active} onMouseEnter={handleActivePhoto} onMouseLeave={handleInactivePhoto}>
+      <SlideImage src={link} />
+      <CaptionContainer active={active}>
+        <Caption userName={user_name} description={description} />
+      </CaptionContainer>
+    </SlideContainer>
+  );
+};
 
 export default Slide;
