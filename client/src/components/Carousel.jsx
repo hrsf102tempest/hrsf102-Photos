@@ -130,9 +130,9 @@ class Carousel extends React.Component {
 
     const carouselNoArrows = (
       <CarouselContainer onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-        <Slide photoData={photoData[leftPhotoIndex]} />
-        <Slide photoData={photoData[midPhotoIndex]} active={midPhotoActive} handleActivePhoto={this.handleActivePhotoMid} handleInactivePhoto={this.handleInactivePhoto} />
-        <Slide photoData={photoData[rightPhotoIndex]} />
+        <Slide photoData={photoData[leftPhotoIndex]} active={leftPhotoActive} />
+        <Slide photoData={photoData[midPhotoIndex]} active={midPhotoActive} />
+        <Slide photoData={photoData[rightPhotoIndex]} active={rightPhotoActive} />
       </CarouselContainer>
     );
 
