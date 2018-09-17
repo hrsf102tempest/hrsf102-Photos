@@ -8,7 +8,7 @@ const LeftArrowContainer = styled.div`
   height: 48px;
   width: 24px;
   padding-left: 24px;
-  z-index: 1;
+  z-index: 2;
   color: #ECF0F1;
 
   &:hover {

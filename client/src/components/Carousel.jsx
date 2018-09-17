@@ -6,9 +6,8 @@ import RightArrow from './RightArrow.jsx';
 
 const CarouselContainer = styled.div`
   position: relative;
-  top: 17%;
   max-width: 660px;
-  height: 220px;
+  height: 300px;
 `;
 
 class Carousel extends React.Component {
@@ -19,11 +18,18 @@ class Carousel extends React.Component {
       midPhotoIndex: 1,
       rightPhotoIndex: 2,
       arrowsVisible: false,
+      leftPhotoActive: false,
+      midPhotoActive: true,
+      rightPhotoActive: false,
     };
     this.handleRightArrowClick = this.handleRightArrowClick.bind(this);
     this.handleLeftArrowClick = this.handleLeftArrowClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleActivePhotoLeft = this.handleActivePhotoLeft.bind(this);
+    this.handleActivePhotoMid = this.handleActivePhotoMid.bind(this);
+    this.handleActivePhotoRight = this.handleActivePhotoRight.bind(this);
+    this.handleInactivePhoto = this.handleInactivePhoto.bind(this);
   }
 
   handleMouseEnter() {
@@ -76,16 +82,48 @@ class Carousel extends React.Component {
     }
   }
 
+  handleActivePhotoLeft() {
+    this.setState({
+      leftPhotoActive: true,
+      midPhotoActive: false,
+      rightPhotoActive: false,
+    });
+  }
+
+  handleActivePhotoMid() {
+    this.setState({
+      leftPhotoActive: false,
+      midPhotoActive: true,
+      rightPhotoActive: false,
+    });
+  }
+
+  handleActivePhotoRight() {
+    this.setState({
+      leftPhotoActive: false,
+      midPhotoActive: false,
+      rightPhotoActive: true,
+    });
+  }
+
+  handleInactivePhoto() {
+    this.setState({
+      leftPhotoActive: false,
+      midPhotoActive: true,
+      rightPhotoActive: false,
+    });
+  }
+
   render() {
-    const { leftPhotoIndex, midPhotoIndex, rightPhotoIndex, arrowsVisible } = this.state;
+    const { leftPhotoIndex, midPhotoIndex, rightPhotoIndex, arrowsVisible, leftPhotoActive, midPhotoActive, rightPhotoActive } = this.state;
     const { photoData } = this.props;
 
     const carouselWithArrows = (
       <CarouselContainer onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
         <LeftArrow handleLeftArrowClick={this.handleLeftArrowClick} />
-        <Slide photoData={photoData[leftPhotoIndex]} />
-        <Slide photoData={photoData[midPhotoIndex]} />
-        <Slide photoData={photoData[rightPhotoIndex]} />
+        <Slide photoData={photoData[leftPhotoIndex]} active={leftPhotoActive} handleActivePhoto={this.handleActivePhotoLeft} handleInactivePhoto={this.handleInactivePhoto} />
+        <Slide photoData={photoData[midPhotoIndex]} active={midPhotoActive} handleActivePhoto={this.handleActivePhotoMid} handleInactivePhoto={this.handleInactivePhoto} />
+        <Slide photoData={photoData[rightPhotoIndex]} active={rightPhotoActive} handleActivePhoto={this.handleActivePhotoRight} handleInactivePhoto={this.handleInactivePhoto} />
         <RightArrow handleRightArrowClick={this.handleRightArrowClick} />
       </CarouselContainer>
     );

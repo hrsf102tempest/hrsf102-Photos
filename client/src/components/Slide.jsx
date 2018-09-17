@@ -3,24 +3,19 @@ import styled from 'styled-components';
 import Caption from './Caption.jsx';
 
 const SlideContainer = styled.div`
+  position: relative;
+  top: 10%;
   display: inline-block;
   height: 220px;
   width: 220px;
   transition: transform .2s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  transform: ${props => props.active ? 'scale(1.15)' : 'scale(1)'};
+  z-index: ${props => props.active ? '1' : '0'};
 `;
 
 const SlideImage = styled.img`
-  height: 220px;
-  width: 220px;
-  transition: transform .2s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  height: 100%;
+  width: 100%;
 `;
 
 class Slide extends React.Component {
@@ -32,8 +27,9 @@ class Slide extends React.Component {
 
   render() {
     const { link, user_name, description } = this.props.photoData;
+    const { handleActivePhoto, handleInactivePhoto, active } = this.props;
     return (
-      <SlideContainer>
+      <SlideContainer active={active} onMouseEnter={handleActivePhoto} onMouseLeave={handleInactivePhoto}>
         <SlideImage src={link} />
       </SlideContainer>
     );

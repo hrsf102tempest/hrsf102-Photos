@@ -8,7 +8,7 @@ const RightArrowContainer = styled.div`
   display: inline-block;
   height: 48px;
   width: 48px;
-  z-index: 1;
+  z-index: 2;
   color: #ECF0F1;
 
   &:hover {
