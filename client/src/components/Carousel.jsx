@@ -6,7 +6,7 @@ import RightArrow from './RightArrow.jsx';
 
 const CarouselContainer = styled.div`
   position: relative;
-  max-width: 660px;
+  width: 660px;
   height: 300px;
 `;
 
@@ -131,7 +131,7 @@ class Carousel extends React.Component {
     const carouselNoArrows = (
       <CarouselContainer onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
         <Slide photoData={photoData[leftPhotoIndex]} />
-        <Slide photoData={photoData[midPhotoIndex]} />
+        <Slide photoData={photoData[midPhotoIndex]} active={midPhotoActive} handleActivePhoto={this.handleActivePhotoMid} handleInactivePhoto={this.handleInactivePhoto} />
         <Slide photoData={photoData[rightPhotoIndex]} />
       </CarouselContainer>
     );
