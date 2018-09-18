@@ -1,13 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
 import Slide from './Slide.jsx';
-import LeftArrow from './LeftArrow.jsx';
-import RightArrow from './RightArrow.jsx';
 
 const CarouselContainer = styled.div`
   position: relative;
   width: 660px;
   height: 300px;
+`;
+
+const LeftArrowContainer = styled.div`
+  position: absolute;
+  top: 40%;
+  display: inline-block;
+  height: 48px;
+  width: 24px;
+  padding-left: 24px;
+  z-index: 2;
+  color: #ECF0F1;
+
+  &:hover {
+    color: #FFFFFF;
+  }
+`;
+
+const RightArrowContainer = styled.div`
+  position: absolute;
+  top: 40%;
+  right: 0%
+  display: inline-block;
+  height: 48px;
+  width: 48px;
+  z-index: 2;
+  color: #ECF0F1;
+
+  &:hover {
+    color: #FFFFFF;
+  }
 `;
 
 class Carousel extends React.Component {
@@ -120,11 +148,15 @@ class Carousel extends React.Component {
 
     const carouselWithArrows = (
       <CarouselContainer onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-        <LeftArrow handleLeftArrowClick={this.handleLeftArrowClick} />
+        <LeftArrowContainer onClick={this.handleLeftArrowClick}>
+          <i className="fas fa-angle-left fa-3x" />
+        </LeftArrowContainer>
         <Slide photoData={photoData[leftPhotoIndex]} active={leftPhotoActive} handleActivePhoto={this.handleActivePhotoLeft} handleInactivePhoto={this.handleInactivePhoto} />
         <Slide photoData={photoData[midPhotoIndex]} active={midPhotoActive} handleActivePhoto={this.handleActivePhotoMid} handleInactivePhoto={this.handleInactivePhoto} />
         <Slide photoData={photoData[rightPhotoIndex]} active={rightPhotoActive} handleActivePhoto={this.handleActivePhotoRight} handleInactivePhoto={this.handleInactivePhoto} />
-        <RightArrow handleRightArrowClick={this.handleRightArrowClick} />
+        <RightArrowContainer onClick={this.handleRightArrowClick}>
+          <i className="fas fa-angle-right fa-3x" />
+        </RightArrowContainer>
       </CarouselContainer>
     );
 
