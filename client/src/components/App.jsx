@@ -6,10 +6,8 @@ import Carousel from './Carousel.jsx';
 const exampleData = require('../../../exampleData.js');
 
 const AppWrapper = styled.div`
-  position: absolute;
   max-width: 660px;
   height: 333px;
-  left: 30px;
 `;
 
 
