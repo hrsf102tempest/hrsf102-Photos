@@ -26,7 +26,18 @@ class App extends React.Component {
   }
 
   getPhotoData() {
-    const bizId = window.location.pathname.slice(5, window.location.pathname.length - 1);
+    // function that gets all search params
+    const parseQueryString = () => {
+      const str = window.location.search;
+      const objURL = {};
+      str.replace(new RegExp('([^?=&]+)(=([^&]*))?', 'g'), ($0, $1, $2, $3) => {
+        objURL[$1] = $3;
+      });
+      return objURL;
+    };
+    const params = parseQueryString();
+    const bizId = params.id;
+    // const bizId = window.location.pathname.slice(5, window.location.pathname.length - 1);
     $.ajax({
       url: `http://localhost:3002/businesses/${bizId}`,
       method: 'GET',
